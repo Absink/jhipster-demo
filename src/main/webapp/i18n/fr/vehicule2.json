@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "vehicule2": {
+      "home": {
+        "title": "Vehicule2s",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Vehicule 2",
+        "createOrEditLabel": "Créer ou éditer un Vehicule 2",
+        "notFound": "Aucun Vehicule 2 trouvé"
+      },
+      "created": "Un nouveau Vehicule 2 a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vehicule 2 avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vehicule 2 avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Vehicule 2 {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vehicule 2"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "prix": "Prix",
+      "nbChevaux": "Nb Chevaux",
+      "marque": "Marque",
+      "parking2": "Parking 2"
+    }
+  }
+}

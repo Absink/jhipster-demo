@@ -1,0 +1,26 @@
+entity Parking2 {
+	nom String
+	nbPlaces Integer
+	dateCreation LocalDate
+	isOpen Boolean
+}
+
+entity Vehicule2 {
+  nom String
+  prix Integer
+  nbChevaux Integer
+  marque Marque
+}
+
+enum Marque {
+  RENAULT,
+  PORSCHE,
+  PEUGEOT
+}
+
+relationship OneToMany {
+	Parking2 to Vehicule2{parking2}
+}
+
+paginate Parking2 with infinite-scroll
+paginate Vehicule2 with pagination

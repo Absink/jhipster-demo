@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20231130080148",
+  "entityTableName": "parking_2",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbPlaces",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isOpen",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Parking2",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "vehicule2",
+      "otherEntityRelationshipName": "parking2",
+      "relationshipName": "vehicule2",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

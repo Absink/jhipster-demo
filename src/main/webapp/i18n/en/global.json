@@ -8,7 +8,9 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "parking": "Parking"
+        "parking": "Parking",
+        "parking2": "Parking 2",
+        "vehicule2": "Vehicule 2"
       },
       "account": {
         "main": "Account",

@@ -1,0 +1,10 @@
+{
+  "demoApp": {
+    "Marque": {
+      "null": "",
+      "RENAULT": "RENAULT",
+      "PORSCHE": "PORSCHE",
+      "PEUGEOT": "PEUGEOT"
+    }
+  }
+}

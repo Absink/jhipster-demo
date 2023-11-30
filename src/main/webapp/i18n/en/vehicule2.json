@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "vehicule2": {
+      "home": {
+        "title": "Vehicule 2 S",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicule 2",
+        "createOrEditLabel": "Create or edit a Vehicule 2",
+        "notFound": "No Vehicule 2 S found"
+      },
+      "created": "A new Vehicule 2 is created with identifier {{ param }}",
+      "updated": "A Vehicule 2 is updated with identifier {{ param }}",
+      "deleted": "A Vehicule 2 is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicule 2 {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicule 2"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "prix": "Prix",
+      "nbChevaux": "Nb Chevaux",
+      "marque": "Marque",
+      "parking2": "Parking 2"
+    }
+  }
+}

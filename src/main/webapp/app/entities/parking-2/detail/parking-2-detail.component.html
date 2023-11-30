@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parking2">
+      <h2 data-cy="parking2DetailsHeading"><span jhiTranslate="demoApp.parking2.detail.title">Parking 2</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parking2.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.parking2.nom">Nom</span></dt>
+        <dd>
+          <span>{{ parking2.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.parking2.nbPlaces">Nb Places</span></dt>
+        <dd>
+          <span>{{ parking2.nbPlaces }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.parking2.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ parking2.dateCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.parking2.isOpen">Is Open</span></dt>
+        <dd>
+          <span>{{ parking2.isOpen }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parking-2', parking2.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

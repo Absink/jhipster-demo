@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="Vehicule2Heading">
+    <span jhiTranslate="demoApp.vehicule2.home.title">Vehicule 2 S</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="demoApp.vehicule2.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicule-2"
+        [routerLink]="['/vehicule-2/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="demoApp.vehicule2.home.createLabel">Create a new Vehicule 2</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicule2s?.length === 0">
+    <span jhiTranslate="demoApp.vehicule2.home.notFound">No Vehicule 2 S found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="vehicule2s && vehicule2s.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.vehicule2.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="prix">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.vehicule2.prix">Prix</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nbChevaux">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.vehicule2.nbChevaux">Nb Chevaux</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="marque">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.vehicule2.marque">Marque</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="parking2.id">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.vehicule2.parking2">Parking 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicule2 of vehicule2s; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicule-2', vehicule2.id, 'view']">{{ vehicule2.id }}</a>
+          </td>
+          <td>{{ vehicule2.nom }}</td>
+          <td>{{ vehicule2.prix }}</td>
+          <td>{{ vehicule2.nbChevaux }}</td>
+          <td jhiTranslate="{{ 'demoApp.Marque.' + vehicule2.marque }}">{{ vehicule2.marque }}</td>
+          <td>
+            <div *ngIf="vehicule2.parking2">
+              <a [routerLink]="['/parking-2', vehicule2.parking2.id, 'view']">{{ vehicule2.parking2.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/vehicule-2', vehicule2.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </a>
+
+              <a [routerLink]="['/vehicule-2', vehicule2.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </a>
+
+              <button type="submit" (click)="delete(vehicule2)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicule2s && vehicule2s.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

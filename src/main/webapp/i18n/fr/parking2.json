@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "parking2": {
+      "home": {
+        "title": "Parking2s",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Parking 2",
+        "createOrEditLabel": "Créer ou éditer un Parking 2",
+        "notFound": "Aucun Parking 2 trouvé"
+      },
+      "created": "Un nouveau Parking 2 a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parking 2 avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parking 2 avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Parking 2 {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parking 2"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "nbPlaces": "Nb Places",
+      "dateCreation": "Date Creation",
+      "isOpen": "Is Open",
+      "vehicule2": "Vehicule 2"
+    }
+  }
+}
