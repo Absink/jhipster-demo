@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "parking": {
+      "home": {
+        "title": "Parkings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Parking",
+        "createOrEditLabel": "Create or edit a Parking",
+        "notFound": "No Parkings found"
+      },
+      "created": "A new Parking is created with identifier {{ param }}",
+      "updated": "A Parking is updated with identifier {{ param }}",
+      "deleted": "A Parking is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Parking {{ id }}?"
+      },
+      "detail": {
+        "title": "Parking"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "nb_places": "Nb Places",
+      "date_creation": "Date Creation",
+      "is_open": "Is Open"
+    }
+  }
+}

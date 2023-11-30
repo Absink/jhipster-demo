@@ -1,0 +1,28 @@
+{
+  "changelogDate": "20231130105038",
+  "entityTableName": "parking",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nb_places",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "date_creation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "is_open",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Parking",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}

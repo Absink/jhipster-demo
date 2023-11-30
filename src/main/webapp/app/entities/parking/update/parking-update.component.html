@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-parking-heading" data-cy="ParkingCreateUpdateHeading" jhiTranslate="demoApp.parking.home.createOrEditLabel">
+        Create or edit a Parking
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="demoApp.parking.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="demoApp.parking.nb_places" for="field_nb_places">Nb Places</label>
+          <input type="number" class="form-control" name="nb_places" id="field_nb_places" data-cy="nb_places" formControlName="nb_places" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="demoApp.parking.date_creation" for="field_date_creation">Date Creation</label>
+          <div class="input-group">
+            <input
+              id="field_date_creation"
+              data-cy="date_creation"
+              type="text"
+              class="form-control"
+              name="date_creation"
+              ngbDatepicker
+              #date_creationDp="ngbDatepicker"
+              formControlName="date_creation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_creationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="demoApp.parking.is_open" for="field_is_open">Is Open</label>
+          <input type="checkbox" class="form-check" name="is_open" id="field_is_open" data-cy="is_open" formControlName="is_open" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

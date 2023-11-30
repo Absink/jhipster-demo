@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "parking": {
+      "home": {
+        "title": "Parkings",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Parking",
+        "createOrEditLabel": "Créer ou éditer un Parking",
+        "notFound": "Aucun Parking trouvé"
+      },
+      "created": "Un nouveau Parking a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parking avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parking avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Parking {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parking"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "nb_places": "Nb Places",
+      "date_creation": "Date Creation",
+      "is_open": "Is Open"
+    }
+  }
+}
