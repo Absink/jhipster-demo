@@ -6,6 +6,7 @@ import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IVehicule2, NewVehicule2 } from '../vehicule-2.model';
+import { Marque } from 'app/entities/enumerations/marque.model';
 
 export type PartialUpdateVehicule2 = Partial<IVehicule2> & Pick<IVehicule2, 'id'>;
 
@@ -44,6 +45,10 @@ export class Vehicule2Service {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  getByMarque(marque: Marque): Observable<EntityArrayResponseType> {
+    return this.http.get<IVehicule2[]>(`api/statistiques/vehicules/${marque}`, { observe: 'response' });
   }
 
   getVehicule2Identifier(vehicule2: Pick<IVehicule2, 'id'>): number {

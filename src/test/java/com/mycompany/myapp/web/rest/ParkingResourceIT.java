@@ -275,7 +275,7 @@ class ParkingResourceIT {
         Parking partialUpdatedParking = new Parking();
         partialUpdatedParking.setId(parking.getId());
 
-        partialUpdatedParking.nb_places(UPDATED_NB_PLACES).date_creation(UPDATED_DATE_CREATION);
+        partialUpdatedParking.nb_places(UPDATED_NB_PLACES);
 
         restParkingMockMvc
             .perform(
@@ -291,7 +291,7 @@ class ParkingResourceIT {
         Parking testParking = parkingList.get(parkingList.size() - 1);
         assertThat(testParking.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testParking.getNb_places()).isEqualTo(UPDATED_NB_PLACES);
-        assertThat(testParking.getDate_creation()).isEqualTo(UPDATED_DATE_CREATION);
+        assertThat(testParking.getDate_creation()).isEqualTo(DEFAULT_DATE_CREATION);
         assertThat(testParking.getIs_open()).isEqualTo(DEFAULT_IS_OPEN);
     }
 

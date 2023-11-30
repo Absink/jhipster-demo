@@ -3,20 +3,19 @@ import dayjs from 'dayjs/esm';
 import { IParking, NewParking } from './parking.model';
 
 export const sampleWithRequiredData: IParking = {
-  id: 7478,
+  id: 26662,
 };
 
 export const sampleWithPartialData: IParking = {
-  id: 20526,
-  nom: 'consequently unto boohoo',
-  is_open: true,
+  id: 14211,
+  nom: 'smart curtain',
 };
 
 export const sampleWithFullData: IParking = {
-  id: 18150,
-  nom: 'into',
-  nb_places: 26585,
-  date_creation: dayjs('2023-11-29'),
+  id: 21170,
+  nom: 'supposing',
+  nb_places: 7781,
+  date_creation: dayjs('2023-11-30'),
   is_open: true,
 };
 

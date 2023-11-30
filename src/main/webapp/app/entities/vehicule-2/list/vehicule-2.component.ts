@@ -15,6 +15,7 @@ import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/conf
 import { IVehicule2 } from '../vehicule-2.model';
 import { EntityArrayResponseType, Vehicule2Service } from '../service/vehicule-2.service';
 import { Vehicule2DeleteDialogComponent } from '../delete/vehicule-2-delete-dialog.component';
+import { Marque } from 'app/entities/enumerations/marque.model';
 
 @Component({
   standalone: true,
@@ -56,6 +57,14 @@ export class Vehicule2Component implements OnInit {
     this.load();
   }
 
+  filterByMarque(): void {
+    this.loadFromBackendWithRouteInformations(2, Marque.PORSCHE).subscribe({
+      next: (res: EntityArrayResponseType) => {
+        this.onResponseSuccess(res);
+      },
+    });
+  }
+
   delete(vehicule2: IVehicule2): void {
     const modalRef = this.modalService.open(Vehicule2DeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.vehicule2 = vehicule2;
@@ -88,10 +97,10 @@ export class Vehicule2Component implements OnInit {
     this.handleNavigation(page, this.predicate, this.ascending);
   }
 
-  protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
+  protected loadFromBackendWithRouteInformations(choice: number = 1, marque?: Marque): Observable<EntityArrayResponseType> {
     return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
-      switchMap(() => this.queryBackend(this.page, this.predicate, this.ascending)),
+      switchMap(() => this.queryBackend(this.page, this.predicate, this.ascending, choice, marque)),
     );
   }
 
@@ -117,7 +126,15 @@ export class Vehicule2Component implements OnInit {
     this.totalItems = Number(headers.get(TOTAL_COUNT_RESPONSE_HEADER));
   }
 
-  protected queryBackend(page?: number, predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {
+  protected queryBackend(
+    page?: number,
+    predicate?: string,
+    ascending?: boolean,
+    choice: number = 1,
+    marque?: Marque,
+  ): Observable<EntityArrayResponseType> {
+    let marque2 = Marque.PORSCHE;
+    if (!marque) marque2 = Marque.PORSCHE;
     this.isLoading = true;
     const pageToLoad: number = page ?? 1;
     const queryObject: any = {
@@ -125,7 +142,14 @@ export class Vehicule2Component implements OnInit {
       size: this.itemsPerPage,
       sort: this.getSortQueryParam(predicate, ascending),
     };
-    return this.vehicule2Service.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    switch (choice) {
+      case 1:
+        return this.vehicule2Service.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+      case 2:
+        return this.vehicule2Service.getByMarque(marque2).pipe(tap(() => (this.isLoading = false)));
+      default:
+        return this.vehicule2Service.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    }
   }
 
   protected handleNavigation(page = this.page, predicate?: string, ascending?: boolean): void {

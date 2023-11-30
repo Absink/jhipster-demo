@@ -1,21 +1,21 @@
 import { IVehicule2, NewVehicule2 } from './vehicule-2.model';
 
 export const sampleWithRequiredData: IVehicule2 = {
-  id: 11901,
+  id: 31099,
 };
 
 export const sampleWithPartialData: IVehicule2 = {
-  id: 19065,
-  prix: 14938,
-  nbChevaux: 20694,
+  id: 18482,
+  prix: 26465,
+  nbChevaux: 1961,
 };
 
 export const sampleWithFullData: IVehicule2 = {
-  id: 3291,
-  nom: 'even only trigonometry',
-  prix: 25711,
-  nbChevaux: 31379,
-  marque: 'RENAULT',
+  id: 85,
+  nom: 'wherever',
+  prix: 20378,
+  nbChevaux: 31741,
+  marque: 'PORSCHE',
 };
 
 export const sampleWithNewData: NewVehicule2 = {

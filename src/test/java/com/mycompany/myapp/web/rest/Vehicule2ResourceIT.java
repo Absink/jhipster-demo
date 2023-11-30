@@ -266,7 +266,7 @@ class Vehicule2ResourceIT {
         Vehicule2 partialUpdatedVehicule2 = new Vehicule2();
         partialUpdatedVehicule2.setId(vehicule2.getId());
 
-        partialUpdatedVehicule2.prix(UPDATED_PRIX);
+        partialUpdatedVehicule2.nom(UPDATED_NOM).marque(UPDATED_MARQUE);
 
         restVehicule2MockMvc
             .perform(
@@ -280,10 +280,10 @@ class Vehicule2ResourceIT {
         List<Vehicule2> vehicule2List = vehicule2Repository.findAll();
         assertThat(vehicule2List).hasSize(databaseSizeBeforeUpdate);
         Vehicule2 testVehicule2 = vehicule2List.get(vehicule2List.size() - 1);
-        assertThat(testVehicule2.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testVehicule2.getPrix()).isEqualTo(UPDATED_PRIX);
+        assertThat(testVehicule2.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testVehicule2.getPrix()).isEqualTo(DEFAULT_PRIX);
         assertThat(testVehicule2.getNbChevaux()).isEqualTo(DEFAULT_NB_CHEVAUX);
-        assertThat(testVehicule2.getMarque()).isEqualTo(DEFAULT_MARQUE);
+        assertThat(testVehicule2.getMarque()).isEqualTo(UPDATED_MARQUE);
     }
 
     @Test

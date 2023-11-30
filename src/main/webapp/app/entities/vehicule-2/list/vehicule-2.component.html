@@ -17,6 +17,9 @@
         <fa-icon icon="plus"></fa-icon>
         <span jhiTranslate="demoApp.vehicule2.home.createLabel">Create a new Vehicule 2</span>
       </button>
+      <button class="btn btn-info me-2" (click)="filterByMarque()" [disabled]="isLoading">
+        <span>Filtre Porshe</span>
+      </button>
     </div>
   </h2>
 

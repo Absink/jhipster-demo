@@ -1,7 +1,6 @@
 {
   "settings": {
     "title": "Profil de l'utilisateur [<strong>{{username}}</strong>]",
-    "description": "Description",
     "form": {
       "firstname": "Prénom",
       "firstname.placeholder": "Votre prénom",

@@ -50,10 +50,10 @@ describe('Vehicule2 Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Parking2 query and add missing value', () => {
       const vehicule2: IVehicule2 = { id: 456 };
-      const parking2: IParking2 = { id: 17819 };
+      const parking2: IParking2 = { id: 14886 };
       vehicule2.parking2 = parking2;
 
-      const parking2Collection: IParking2[] = [{ id: 28986 }];
+      const parking2Collection: IParking2[] = [{ id: 29850 }];
       jest.spyOn(parking2Service, 'query').mockReturnValue(of(new HttpResponse({ body: parking2Collection })));
       const additionalParking2s = [parking2];
       const expectedCollection: IParking2[] = [...additionalParking2s, ...parking2Collection];
@@ -72,7 +72,7 @@ describe('Vehicule2 Management Update Component', () => {
 
     it('Should update editForm', () => {
       const vehicule2: IVehicule2 = { id: 456 };
-      const parking2: IParking2 = { id: 32463 };
+      const parking2: IParking2 = { id: 714 };
       vehicule2.parking2 = parking2;
 
       activatedRoute.data = of({ vehicule2 });
