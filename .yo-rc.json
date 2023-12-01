@@ -10,7 +10,7 @@
     "clientTheme": "none",
     "creationTimestamp": 1701331248391,
     "databaseType": "sql",
-    "devDatabaseType": "h2Disk",
+    "devDatabaseType": "postgresql",
     "devServerPort": 4200,
     "enableGradleEnterprise": null,
     "enableHibernateCache": true,
