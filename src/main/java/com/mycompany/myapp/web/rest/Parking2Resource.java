@@ -3,6 +3,8 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.Parking2;
 import com.mycompany.myapp.repository.Parking2Repository;
 import com.mycompany.myapp.service.InternalService;
+import com.mycompany.myapp.service.dto.ParkingDTO;
+import com.mycompany.myapp.service.mapper.ParkingMapper;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -50,9 +52,12 @@ public class Parking2Resource {
 
     private final InternalService internalService;
 
-    public Parking2Resource(Parking2Repository parking2Repository, InternalService internalService) {
+    private final ParkingMapper parkingMapper;
+
+    public Parking2Resource(Parking2Repository parking2Repository, InternalService internalService, ParkingMapper parkingMapper) {
         this.parking2Repository = parking2Repository;
         this.internalService = internalService;
+        this.parkingMapper = parkingMapper;
     }
 
     /**
@@ -184,13 +189,15 @@ public class Parking2Resource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the parking2, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Parking2> getParking2(@PathVariable Long id) {
+    public ResponseEntity<ParkingDTO> getParking2(@PathVariable Long id) {
         log.debug("REST request to get Parking2 : {}", id);
         Optional<Parking2> parking2 = parking2Repository.findById(id);
-        parking2.ifPresent(p -> {
-            p.setIsOpen(!this.internalService.parkingIsFull(p));
-        });
-        return ResponseUtil.wrapOrNotFound(parking2);
+        ParkingDTO parkingDTO = parkingMapper.parkingToParkingDTO(parking2.get());
+        parkingDTO = this.internalService.addInfos(parkingDTO);
+        //        parking2.ifPresent(p -> {
+        //            p.setIsOpen(!this.internalService.parkingIsFull(p));
+        //        });
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(parkingDTO));
     }
 
     /**

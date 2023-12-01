@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.domain.Parking2;
+import com.mycompany.myapp.service.dto.ParkingDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,10 @@ public class InternalService {
         if (parking.getVehicule2s().size() == 0) return parking.getNbPlaces(); else return (
             parking.getNbPlaces() - parking.getVehicule2s().size()
         );
+    }
+
+    public ParkingDTO addInfos(ParkingDTO parkingDTO) {
+        parkingDTO.setNbPlacesDisponibles(parkingDTO.getNbPlaces() - parkingDTO.getNb_vehicules());
+        return parkingDTO;
     }
 }
