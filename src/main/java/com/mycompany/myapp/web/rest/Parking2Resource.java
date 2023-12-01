@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Parking2;
 import com.mycompany.myapp.repository.Parking2Repository;
+import com.mycompany.myapp.service.InternalService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,7 +17,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
@@ -39,8 +48,11 @@ public class Parking2Resource {
 
     private final Parking2Repository parking2Repository;
 
-    public Parking2Resource(Parking2Repository parking2Repository) {
+    private final InternalService internalService;
+
+    public Parking2Resource(Parking2Repository parking2Repository, InternalService internalService) {
         this.parking2Repository = parking2Repository;
+        this.internalService = internalService;
     }
 
     /**
@@ -175,6 +187,9 @@ public class Parking2Resource {
     public ResponseEntity<Parking2> getParking2(@PathVariable Long id) {
         log.debug("REST request to get Parking2 : {}", id);
         Optional<Parking2> parking2 = parking2Repository.findById(id);
+        parking2.ifPresent(p -> {
+            p.setIsOpen(!this.internalService.parkingIsFull(p));
+        });
         return ResponseUtil.wrapOrNotFound(parking2);
     }
 
